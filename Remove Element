@@ -1,0 +1,39 @@
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+
+Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
+
+Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.
+Return k.
+Code:
+Optimised:
+O(n)
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int k=0;
+        for(auto x: nums){
+            if(x!=val){
+                nums[k++]=x;
+            }
+        }
+        return k;
+    }
+};  
+
+Here I am rewriting array by just taking a second index and adding the elements that are not val. I am skiping the val and rewriting them with next non val.
+brute:
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        vector <int> ans;
+        for(auto x: nums){
+            if(x!=val){
+                ans.push_back(x);
+            }
+        }
+        nums=ans;
+        return nums.size();
+    }
+};
+just take other array and add non val to array and then replace the nums wit val
+O(N-k) and O(N).
